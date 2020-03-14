@@ -1,0 +1,395 @@
+from flask import Flask, render_template, url_for, request
+from flask_sqlalchemy import SQLAlchemy
+
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/registration'
+db = SQLAlchemy(app)
+
+
+'''
+first_name,last_name,email
+'''
+
+
+class Registration_form(db.Model):
+    first_name = db.Column(db.String(20), primary_key=True,  unique = False )
+    last_name = db.Column(db.String(20) , unique = False)
+    email = db.Column(db.String(30), unique = False)
+
+
+@app.route('/')
+def hello_world():
+    return render_template('HOME_page.html')
+@app.route('/yash')
+def about():
+    return render_template('new_login_page.html')
+@app.route('/form', methods=['GET', 'POST'])
+def kotlin():
+    if (request.method=='POST') :
+        first = request.form.get('first')
+        last = request.form.get('last')
+        email = request.form.get('email')
+
+        entry = Registration_form(first_name=first, last_name=last, email=email)
+        db.session.add(entry)
+        db.session.commit()
+    return render_template('registration_form.html')
+@app.route('/password')
+def password():
+    return render_template('password.html')
+@app.route('/username')
+def username():
+    return render_template('username.html')
+@app.route('/calculator')
+def calculator():
+    return render_template('calculator.html')
+if __name__ == '__main__':
+    app.run(debug= True)
+    
+    /:
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+   #b1{
+        border-radius:5px;
+        border-color:black;
+        border-width:1px;
+        height: 30px;
+        width: 70px;
+        }
+         #b2{
+        border-radius:5px;
+        border-color:black;
+        border-width:1px;
+        height: 30px;
+        width: 70px;
+        }
+         #b3{
+        border-radius:5px;
+        border-color:black;
+        border-width:1px;
+        height: 30px;
+        width: 90px;
+        }
+       #loading {
+        background: url('spinner.gif') no-repeat center center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999999;
+        }
+        body{
+        background-image : url('static/img/03.jpg') ;
+        background-color : #cccccc;
+
+                }
+    </style>
+    <title>homepage</title>
+</head>
+<body>
+<img src="static/img/logo.png">
+<div align="right">
+<button onclick="window.location.href='/'" id="b1">HOME</button>&nbsp&nbsp
+<button onclick="window.location.href='/yash'" id="b2">LOGIN</button>&nbsp&nbsp
+<button onclick="window.location.href='/form'" id="b3">REGISTER</button>
+</div>
+<hr color="black"><br>
+<font size="5px" color="white">
+To address the challenges faced by the Indian Information Technology Industry & growth of the domestic IT Market, the Ministry of Human Resource Development (MHRD),<br>
+Government of India has established twenty Indian Institutes of Information Technology (IIIT), on not-for-profit Public Private Partnership basis. As a part of this, IIIT-Surat was<br>
+planned and started with initial mentoring by SVNIT, Surat till the new campus of IIIT is ready in Surat. A memorandum of understanding and a memorandum of association have<br>
+been signed between the President of India, the Governor of the State of Gujarat and Industry partners namely; Gujarat Narmada Fertilizer Corporation (GNFC), Gujarat Informatics<br>
+Limited (GIL) and Gujarat Gas Limited (GAL). After series of meetings at MHRD, Directorate of Technical Education (Gujarat State) and SVNIT, Surat planed various academic<br>
+activities. State Government has requested Collector of Surat to allocate 50 acres of land in Surat and is in progress. B. Tech. courses in Electronics & Communication Engineering<br>
+and Computer Science & Engineering have begun in SVNIT campus from July, 2017. The admission to these B.Tech., courses is conducted by Joint Seat Allocation Authority<br>
+(JoSSA) from the year 2017-18 onwards. The hostel facility for the students is provided by SVNIT. The academic activities of IIIT-Surat are in time-synchronization with SVNIT.<br>
+</font>
+<a href="/calculator">CALCULATOR</a><br>
+<a href="http:/facebook.com">FACEBOOK ID</a><br>
+<a href="http:/google.com">GOOGLE</a><br>
+</body>
+</html>
+    
+    /yash : 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new_login_page</title>
+</head>
+<link rel="stylesheet"
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Acme|Lobster&display=swap" rel="stylesheet">
+<style>
+
+
+    body,html{
+    height : 100%;
+    margin: 0;
+    }
+    .bg{
+    background-image : url('static/img/06.jpg');
+    height : 100%;
+    padding: 20px;
+    background-position : center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    }
+    .line{
+    color: black;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    border-radius:20px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 20%;
+    height:40%;
+    padding: 20px;
+    text-align: center;
+    }
+    .text{
+    width: 250px;
+    height : 30px;
+    border-bottom: 1px solid black;
+    border-width: 0 0 2px;
+    border-radius : 5px;
+    background-color : transparent;
+    font-family: Acme ,sans serif;
+     font-size : 17px;
+    }
+    ::placeholder{
+    font-family: Acme ,sans serif;
+    font-size : 17px;
+    }
+    .btn{
+    width: 80px;
+    height: 30px;
+    background-color: transparent;
+    border-width: 1.25px;
+    border-color : black;
+    border-radius:5px;
+    transition: 0.3s;
+    font-family: Acme ,sans serif;
+    }
+    .btn:hover{
+    background-color: black;
+    color: white;
+    }
+    .text:hover{
+    background-color:black;
+    color:white;
+
+    }
+
+</style>
+<script>
+function myFun(){
+ var a=document.getElementById("b1").value;
+ var b=document.getElementById("b2").value;
+ if(a==""){
+    document.getElementById("p1").innerHTML="***please fill the Username***";
+     return false;
+}
+if(b==""){
+    document.getElementById("p2").innerHTML="***please fill the password***";
+     return false;
+}
+}
+</script>
+<body>
+<div class="bg" onsubmit="return myFun()">
+    <button onclick="window.location.href='/'" class="btn">HOME</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button onclick="window.location.href='/yash'" class="btn" >LOGIN</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button onclick="window.location.href='/form'" class="btn" >REGISTER</button>
+
+
+       <div class="line">
+           <center><font size="5px"> <h2 style="font-family : Lobster ,cursive">LOGIN</h2></font></center>
+           <form method="get" action="/">
+     <i class="fa fa-user fa-lg icon">
+    <input type="text"  id="b1" placeholder="USERNAME" class="text"></i> <br></br>
+               <p id="p1"></p>
+           <i class="fa fa-lock fa-lg icon"></i>
+    <input type="password" id="b2" PLACEHOLDER="PASSWORD" class="text">  <br></br>
+               <p id="p2"></p>
+    <input type="submit" value="LOGIN" id="f1" class="btn">
+               </form>
+       </div>
+</div>
+</body>
+</html>
+
+/form:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Lobster&display=swap" rel="stylesheet">
+    <style>
+
+        .txt{
+        width: 500px;
+        height : 20px;
+        border-radius: 5px;
+        border-color: black;
+        border-width: 0 0 2px;
+        background-color : transparent;
+        font-family: Acme ,sans serif;
+         font-size : 17px;
+        }
+        .txt:hover{
+        background-color : black;
+        color : white;
+        }
+
+        input[type="email"]::placeholder {
+                text-align: right;
+            }
+
+
+
+        body,html{
+        height: 100%;
+        margin: 0;
+        }
+        .bg{
+        background-image : url('static/img/06.jpg');
+        height : 100%;
+        padding:20px;
+        background-position : center;
+        background-repeat : no-repeat;
+        background-size: cover;
+
+        }
+        .btn{
+         width: 80px;
+         height: 30px;
+         background-color: transparent;
+         border-width:1.11px;
+         border-color : black;
+         border-radius:5px;
+         font-family: Acme ,sans serif;
+         transition: 0.3s;
+        }
+        .btn:hover{
+        background-color:black;
+        color : white;
+        }
+        ::placeholder{
+        font-family: Acme ,sans serif;
+        font-size : 17px;
+        }
+    </style>
+    <script>
+function myFun(){
+ var a=document.getElementById("t1").value;
+ var b=document.getElementById("t2").value;
+ var c=document.getElementById("chb").checked;
+ var d=document.getElementById("y1").checked;
+ var e=document.getElementById("y2").checked;
+ if(a==""){
+    document.getElementById("d1").innerHTML="***please fill the firstname***";
+     return false;
+}
+ if(b==""){
+    document.getElementById("d2").innerHTML="***please fill the surname***";
+     return false;
+}
+ if(a.length<3){
+    document.getElementById("d1").innerHTML="***the username should be of atleast 3 characters***";
+     return false;
+}
+
+ if(a.length>10){
+    document.getElementById("d1").innerHTML="***permitted name length exceeded***";
+     return false;
+}
+ if(b.length<3){
+    document.getElementById("d2").innerHTML="***the surname should be of atleast 3 characters***";
+     return false;
+}
+ if(c==false){
+    document.getElementById("p1").innerHTML="***please check the box***";
+     return false;
+}
+if(d==false&&e==false){
+    document.getElementById("q1").innerHTML="***please select the gender***";
+     return false;
+}}
+    </script>
+    <title>registration</title>
+</head>
+<body bgcolor="orange" onsubmit="return myFun()" >
+<div class="bg">
+<button onclick="window.location.href='/'" class="btn">HOME</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button onclick="window.location.href='/yash'" class="btn">LOGIN</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button onclick="window.location.href='/form'" class="btn">REGISTER</button>
+
+<hr color="black">
+<form  method="post" action="/form">
+        <center><font color="black" style="font-family: Lobster ,cursive"><u><h1>REGISTRATION</h1> </u></font></center>
+        <table>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">FIRST NAME:</font></td>
+                <td><input type="text" id="t1" class="txt" name="first" placeholder="    enter your first name"></td>
+                <td><span id="d1"></span></td>
+            </tr>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">LAST NAME:</font></td>
+                <td><input type="text" id="t2" class="txt" name="last" placeholder="    enter your surname"></td>
+                <td><span id="d2"></span></td>
+            </tr>
+             <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">EMAIL ADDRESS:</font></td>
+                <td><input type="email" id="t3" class="txt" name="email" placeholder=" enter your email address                                                                     |@gmail.com  " aria-placeholder="ENTER THE EMAIL ADDRESS HERE"></td>
+                 <td><span id="d3"></span></td>
+            </tr>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">GENDER:</font></td>
+                <td>
+                    <input type="radio" name="gndr" id="y1"><font color="white" style="font-family: Acme ,sans serif">MALE</font>&nbsp&nbsp
+                    <input type="radio" name="gndr" id="y2"><font color="white" style="font-family: Acme ,sans serif">FEMALE</font><br>
+                    <span id="q1"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif"> CITY:</font></td>
+                <td><select id="s1" >
+                <option value="1">SELECT CITY</option>
+                <option value="2">MUMBAI</option>
+                <option value="3">NAGPUR</option>
+                <option value="4">SURAT</option>
+                <option value="5">DELHI</option>
+                <option value="6">AHMEDABAD</option>
+                <option value="7">LUCKNOW</option>
+                </select>
+                </td>
+            </tr>
+        </table>
+        <hr color="black">
+    <font color="white">
+        <input type="checkbox" id="chb"> ALL THE INFORMATION I PROVIDED IS CORRECT ACCORDING TO ME.I ACCEPT ALL THE TERMS AND CONDITIONS FOR THE REGISTRATION<br></br></font>
+        <input type="reset" value="RESET" class="btn"><br>
+        <hr color="black">
+        <input type="submit" value="SUBMIT" id="s2" class="btn">
+    <font color="red"><p id="p1"></p></font>
+    </form>
+</div>
+</body>
+</html>
+
+
+    
+ 
