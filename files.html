@@ -1,0 +1,307 @@
+
+    <!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOSTEL CLUB</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://www.geeksforgeeks.org/favicon.ico" type="image/x-icon">
+</head>
+<link rel="stylesheet"
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Orbitron&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Bellota|Lobster&display=swap" rel="stylesheet">
+<style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+       overflow-y: scroll;
+	}
+	.header{
+
+		padding: 8px;
+		height: 270px;
+		text-align: right;
+		position : relative;
+		background: linear-gradient(90deg,#f0027f,#F20976,#75489f);
+		animation: animate 1s ease infinite;
+		
+	}
+	
+	.header:before
+	{
+		content: '';
+		position : absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		height : 255px;
+		background: url('static/img/wave.png');
+		background-size : cover;
+		background-repeat :no-repeat ;
+		
+
+	}
+	@keyframes animate{
+    0%{background-position:0% 50%}
+    25%{background-position: 100% 50%}
+    50%{background-position:0% 50%}
+    75%{background-position: 100% 50%}
+    100%{background-position:0% 50%}
+}
+	.btn{
+		height : 30px;
+		border-radius: 5px;
+		border-width: 0 0 0;
+		font-family: 'Fredoka One', cursive;
+		font-size: 20px;
+		background-color: transparent;
+		color : white;
+	}
+	.btn:hover{
+		background: linear-gradient(33deg,#F5183D,#F42790,#F710D0);
+		animation: animate 5s ease infinite;
+		color:black;
+	}
+	.container{
+		text-align: center;
+		margin-top: 11%;
+		font-size:56px;
+		font-family: 'Fredoka One', cursive;
+	}
+	.box{
+		background : linear-gradient(40deg,#0428F9,#7104F9,#F904ED);
+        height :400px;
+        padding :50px;
+       font-family: 'Fredoka One', cursive;
+       font-size : 24px;
+       margin-top: 10%;
+       position : relative;
+       animation: animate 5s ease infinite;
+	}
+	.box:before
+	{
+		content: '';
+		position : absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		height : 260px;
+		background: url('static/img/wave.png');
+		background-size : cover;
+		background-repeat: no-repeat;
+	}
+	#flip{
+		height : 65px;
+		overflow: hidden;
+	}
+	#flip > div > div{
+		color: #fff;
+		padding: 2px 10px ;
+		height:55px;
+		margin-bottom: 35px;
+		display: inline-block;
+		border-radius: 10px;
+	}
+	#flip div:first-child{
+		animation: show 5s linear infinite;
+	}
+	#flip div div{
+		background:#F92409;
+	}
+	#flip div:first-child div{
+		background: #2054F6 ;
+	}
+	#flip div:last-child div{
+		background: #42DA18;
+	}
+    
+    @keyframes show{
+         0%{margin-top:-270px;}
+         5%{margin-top: -180px;}
+         33%{margin-top: -180px;}
+         38%{margin-top: -90px;}
+         66%{margin-top: -90px;}
+         71%{margin-top: 0px;}
+         99.99%{margin-top: 0px;}
+         100%{margin-top: -270px;}
+    }
+    .clock{
+		text-align: center;
+		margin-top: 9%;
+		font-size:56px;
+		font-family: 'Fredoka One', cursive;
+}
+	.clock .division1{
+		margin-left:48%;
+		width :65px;
+		height : 65px;
+		background-color:blue;
+		animation-name: spin;
+        animation-duration: 4000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        color:#fff;
+        border-radius: 8px;
+	}
+	.clock .division2{
+		margin-left:48%;
+		width :65px;
+		height : 65px;
+		background-color:yellow;
+		animation-name: spin1;
+        animation-duration: 4000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        color:#fff;
+        border-radius: 8px;
+	}
+	.clock .division3{
+		margin-left:48%;
+		width :65px;
+		height : 65px;
+		background-color:red;
+		animation-name: spin2;
+        animation-duration: 4000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        color:#fff;
+        border-radius: 8px;
+	}
+	.clock .two{
+		 color: rgba(225,225,225,.05);
+		background:linear-gradient(33deg,#FB0404,#FBCD04,#66FB04,#04CCFB,#9304FB);
+		background-repeat: repeat;
+		-webkit-background-clip:text;
+		animation: animate 10s linear infinite;			
+	}
+	 @keyframes spin { 
+        from { 
+            transform: rotate(0deg); 
+        } to { 
+            transform: rotate(360deg); 
+        }
+    }
+     @keyframes spin1 { 
+        from { 
+            transform: rotate(360deg); 
+        } to { 
+            transform: rotate(0deg); 
+        }
+    }
+    @keyframes spin2 { 
+        from { 
+            transform: rotate(0deg); 
+        } to { 
+            transform: rotate(360deg); 
+        }
+    }
+    @keyframes like{
+    	0%{
+    		background-position: left 0px top 0px;
+    	}
+    	100%{
+    	
+    		background-position: left 800px top 0px;
+    	
+    	}
+    }
+    .sup{
+    	margin-top:7%;
+    	height : 360px;
+    	background:linear-gradient(45deg,#C004FB,#FB04F7,#FB047B,#FB043C);
+    	padding:40px;
+    	border-radius : 20px;
+    }
+    .icon{
+    	color:#E6DCDE;
+    	transition: 1s;
+    }
+    .icon:hover{
+    	color : black;
+    }
+    .sup .sup1{
+    	height : 100px;
+    	width : 400px;
+    	border-color: black;
+    	border-width : 1.5px;
+    	text-align :left;
+    	font-family: 'Lobster', cursive;
+
+    }
+    .sup .sup2{
+    	margin-left: 34%;
+    	padding :0;
+    	font-family:  'Lobster', cursive;
+    	position: relative;
+    	margin-top: 0;
+    }
+    .sup img{
+    	width : 430px;
+    }
+   
+    .sup iframe{
+    	width :300px;
+    	height :280px ;
+    	margin-bottom :9%;
+    	border-radius: 8px;
+    }
+    
+</style>
+<body>
+	<section class="header">
+		<button class="btn" onclick="window.location.href='/'" >
+			HOME
+		</button>&nbsp&nbsp&nbsp&nbsp
+		<button class="btn" onclick="window.location.href='/yash'" >
+			LOGIN
+		</button>&nbsp&nbsp&nbsp&nbsp
+		<button class="btn" onclick="window.location.href='/form'" >
+			REGISTER
+		</button>&nbsp&nbsp&nbsp&nbsp
+	</section>
+
+	<div class="container">
+	MAKE
+<div id="flip">
+	<div><div>LIFESTYLE</div></div>
+	<div><div>WORK</div></div>
+	<div><div>EVERYTHING</div></div>
+</div>
+  AWESOME!
+</div>
+<div class="box">
+	<font size="22px">ABOUT US</font><br>
+	WE ARE HOSTEL CLUB.THIS SENTENCE HAS ITS OWN IMPORTANCE. THE THOUGHT<BR> HOW THE HOSTEL CLUB WAS FORMED GIVES ME GOOSEBUMPS . OUR HOSTEL CLUB <BR>
+	CONSISTS OF HIGHLY ENTHISUASTIC GENTELMEN. THESE GUYS CAN DO ANYTHING<br> FOR HOSTEL CLUB. AND OUR SLOGAN RESEMBLES HOW AWESOME WE PEOPLE ARE.
+</div>
+<div class="clock">
+	<div class="two">C&nbsp R&nbsp E&nbsp A&nbsp T&nbsp I&nbsp N&nbspG</div>
+	W<div class="division1">O</div>
+	N<br>
+	<div class="division2">D</div>
+	E<br>
+	<div class="division3">R</div>
+	S<br>
+</div>
+<div class="sup">
+	<div class="sup1">
+		<font size="15px" >Social Media</font><br></br>
+		    <a href="https://www.instagram.com" class="fa fa-instagram fa-3x icon"></a><font size="6px">&nbspInstagram</font><br></br><br>
+		    <font size="6px">&nbspfacebook</font>
+	<a href="https://www.facebook.com" class="fa fa-facebook fa-3x icon"></a><br></br><br>
+	<a href="https://www.twitter.com" class="fa fa-twitter fa-3x icon"></a><font size="6px">&nbsp&nbsptwitter</font>
+    </div>
+     <iframe align="right"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.700794135862!2d72.78135371461646!3d21.16430238592509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04dedbfffffff%3A0xe2683f850017f1be!2sIIIT%20Surat!5e0!3m2!1sen!2sin!4v1584444930595!5m2!1sen!2sin" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+     <div class="sup2">
+   	<h1>We Are At</h1>
+   	<a href="http://iiitsurat.ac.in">
+   	<img src="static/img/logo.png">
+   </a>
+</div>
+</div>
+</body>
+</html>
+    
+    
