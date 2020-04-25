@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Lobster&display=swap" rel="stylesheet">
+    <style>
+
+        .txt{
+        width: 500px;
+        height : 20px;
+        border-radius: 5px;
+        border-color: black;
+        border-width: 0 0 2px;
+        background-color : transparent;
+        font-family: Acme ,sans serif;
+         font-size : 17px;
+        }
+        .txt:hover{
+        background-color : black;
+        color : white;
+        }
+
+        input[type="email"]::placeholder {
+                text-align: right;
+            }
+
+
+
+        body,html{
+        height: 100%;
+        margin: 0;
+        }
+        .bg{
+        background-image : url('static/img/06.jpg');
+        height : 100%;
+        padding:20px;
+        background-position : center;
+        background-repeat : no-repeat;
+        background-size: cover;
+
+        }
+        .btn{
+         width: 80px;
+         height: 30px;
+         background-color: transparent;
+         border-width:1.11px;
+         border-color : black;
+         border-radius:5px;
+         font-family: Acme ,sans serif;
+         transition: 0.3s;
+        }
+        .btn:hover{
+        background-color:black;
+        color : white;
+        }
+        ::placeholder{
+        font-family: Acme ,sans serif;
+        font-size : 17px;
+        }
+    </style>
+    <script>
+function myFun(){
+ var a=document.getElementById("t1").value;
+ var b=document.getElementById("t2").value;
+ var c=document.getElementById("chb").checked;
+ var d=document.getElementById("y1").checked;
+ var e=document.getElementById("y2").checked;
+ if(a==""){
+    document.getElementById("d1").innerHTML="***please fill the firstname***";
+     return false;
+}
+ if(b==""){
+    document.getElementById("d2").innerHTML="***please fill the surname***";
+     return false;
+}
+ if(a.length<3){
+    document.getElementById("d1").innerHTML="***the username should be of atleast 3 characters***";
+     return false;
+}
+
+ if(a.length>10){
+    document.getElementById("d1").innerHTML="***permitted name length exceeded***";
+     return false;
+}
+ if(b.length<3){
+    document.getElementById("d2").innerHTML="***the surname should be of atleast 3 characters***";
+     return false;
+}
+ if(c==false){
+    document.getElementById("p1").innerHTML="***please check the box***";
+     return false;
+}
+if(d==false&&e==false){
+    document.getElementById("q1").innerHTML="***please select the gender***";
+     return false;
+}}
+    </script>
+    <title>registration</title>
+</head>
+<body bgcolor="orange" onsubmit="return myFun()" >
+<div class="bg">
+<button onclick="window.location.href='/'" class="btn">HOME</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button onclick="window.location.href='/yash'" class="btn">LOGIN</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<button onclick="window.location.href='/form'" class="btn">REGISTER</button>
+
+<hr color="black">
+<form  method="post" action="/form">
+        <center><font color="black" style="font-family: Lobster ,cursive"><u><h1>REGISTRATION</h1> </u></font></center>
+        <table>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">FIRST NAME:</font></td>
+                <td><input type="text" id="t1" class="txt" name="first" placeholder="    enter your first name"></td>
+                <td><span id="d1"></span></td>
+            </tr>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">LAST NAME:</font></td>
+                <td><input type="text" id="t2" class="txt" name="last" placeholder="    enter your surname"></td>
+                <td><span id="d2"></span></td>
+            </tr>
+             <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">EMAIL ADDRESS:</font></td>
+                <td><input type="email" id="t3" class="txt" name="email" placeholder=" enter your email address                                                                     |@gmail.com  " aria-placeholder="ENTER THE EMAIL ADDRESS HERE"></td>
+                 <td><span id="d3"></span></td>
+            </tr>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif">GENDER:</font></td>
+                <td>
+                    <input type="radio" name="gndr" id="y1"><font color="white" style="font-family: Acme ,sans serif">MALE</font>&nbsp&nbsp
+                    <input type="radio" name="gndr" id="y2"><font color="white" style="font-family: Acme ,sans serif">FEMALE</font><br>
+                    <span id="q1"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><font size="5" color="white" style="font-family: Acme ,sans serif"> CITY:</font></td>
+                <td><select id="s1" >
+                <option value="1">SELECT CITY</option>
+                <option value="2">MUMBAI</option>
+                <option value="3">NAGPUR</option>
+                <option value="4">SURAT</option>
+                <option value="5">DELHI</option>
+                <option value="6">AHMEDABAD</option>
+                <option value="7">LUCKNOW</option>
+                </select>
+                </td>
+            </tr>
+        </table>
+        <hr color="black">
+    <font color="white">
+        <input type="checkbox" id="chb"> ALL THE INFORMATION I PROVIDED IS CORRECT ACCORDING TO ME.I ACCEPT ALL THE TERMS AND CONDITIONS FOR THE REGISTRATION<br></br></font>
+        <input type="reset" value="RESET" class="btn"><br>
+        <hr color="black">
+        <input type="submit" value="SUBMIT" id="s2" class="btn">
+    <font color="red"><p id="p1"></p></font>
+    </form>
+</div>
+</body>
+</html>
